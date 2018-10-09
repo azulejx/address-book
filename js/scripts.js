@@ -1,7 +1,10 @@
 //business logic
-function Contact(first, last) {
+function Contact(first, last, street, city, state) {
   this.firstName = first;
   this.lastName = last;
+  this.street = street;
+  this.city = city;
+  this.state = state;
 }
 
 Contact.prototype.fullName = function() {
@@ -15,8 +18,11 @@ $(document).ready(function() {
 
     var inputtedFirstName = $("input#new-first-name").val();
     var inputtedLastName = $("input#new-last-name").val();
+    var inputtedStreet = $("input#new-street").val();
+    var inputtedCity = $("input#new-city").val();
+    var inputtedState = $("input#new-state").val();
 
-    var newContact = new Contact(inputtedFirstName, inputtedLastName);
+    var newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedStreet, inputtedCity, inputtedState);
 
     $("ul#contacts").append("<li><span class='contact'>" + newContact.fullName() + "</span></li>");
 
@@ -25,9 +31,13 @@ $(document).ready(function() {
       $("#show-contact h2").text(newContact.firstName);
       $(".first-name").text(newContact.firstName);
       $(".last-name").text(newContact.lastName);
+      $(".street").text(newContact.street);
+      $(".city").text(newContact.city);
+      $(".state").text(newContact.state);
     });
 
-    $("input#new-first-name").val("");
-    $("input#new-last-name").val("");
+    // $("input#new-first-name").val("");
+    // $("input#new-last-name").val("");
+    // $("input")
   });
 });
